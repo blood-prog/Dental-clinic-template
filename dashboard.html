@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>AsmSmile Dashboard</title>
   <style>
-    #login-screen { display: flex; }
+    #login-screen { display: flex; align-items: center; justify-content: center; }
     #login-screen.hidden { display: none; }
     #dashboard-app.hidden { display: none; }
   </style>
@@ -73,7 +73,7 @@ body { font-family: 'Hanken Grotesk', sans-serif; background: #f9f9f7; color: #1
 <body>
 
 <!-- ========== LOGIN SCREEN ========== -->
-<div id="login-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-surface" style="display:flex">
+<div id="login-screen" class="fixed inset-0 z-[100] items-center justify-center bg-surface">
   <div class="w-full max-w-sm mx-4 bg-surface-container-lowest rounded-2xl border border-outline-variant p-8 shadow-lg">
     <div class="text-center mb-8">
       <div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-4">
@@ -87,7 +87,7 @@ body { font-family: 'Hanken Grotesk', sans-serif; background: #f9f9f7; color: #1
         <label class="block text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-1.5">Password</label>
         <input id="login-password" type="password" class="w-full rounded-xl border-0 py-2.5 px-4 bg-surface-container-low text-on-surface ring-1 ring-inset ring-outline-variant/50 focus:ring-2 focus:ring-inset focus:ring-primary text-sm" placeholder="Enter dashboard password" autocomplete="current-password"/>
       </div>
-      <p id="login-error" class="text-xs text-error hidden">Incorrect password</p>
+      <p id="login-error" class="text-xs text-error hidden"></p>
       <button id="login-btn" class="w-full py-2.5 rounded-full bg-primary text-on-primary text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
         <span>Sign In</span>
         <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -152,6 +152,12 @@ body { font-family: 'Hanken Grotesk', sans-serif; background: #f9f9f7; color: #1
       <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-sm font-semibold">A</div>
     </div>
   </header>
+
+  <!-- ========== ERROR BANNER ========== -->
+  <div id="error-banner" class="hidden mx-4 md:mx-8 mt-4 px-4 py-3 rounded-xl bg-error-container text-on-error-container text-sm flex items-center gap-2">
+    <span class="material-symbols-outlined text-[18px]">warning</span>
+    <span id="error-message"></span>
+  </div>
 
   <!-- ========== CONTENT ========== -->
   <main class="flex-1 p-4 md:p-8 space-y-8">
@@ -416,21 +422,32 @@ document.addEventListener('DOMContentLoaded', function() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password: pw })
     }).then(function(r) {
-      if (r.status === 401) {
-        document.getElementById('login-error').classList.remove('hidden');
-        return null;
+      return r.text().then(function(text) {
+        return { status: r.status, body: text };
+      });
+    }).then(function(resp) {
+      var errorEl = document.getElementById('login-error');
+      if (resp.status === 401) {
+        errorEl.textContent = 'Incorrect password';
+        errorEl.classList.remove('hidden');
+        return;
       }
-      return r.json();
-    }).then(function(data) {
+      var data;
+      try { data = JSON.parse(resp.body); } catch(e) { data = null; }
       if (data && data.success) {
         TOKEN = pw;
         sessionStorage.setItem('asm_token', pw);
-        document.getElementById('login-error').classList.add('hidden');
+        errorEl.classList.add('hidden');
         requireLogin();
         loadAll();
+      } else {
+        errorEl.textContent = 'Server error: ' + (data ? data.error : resp.body);
+        errorEl.classList.remove('hidden');
       }
-    }).catch(function() {
-      document.getElementById('login-error').classList.remove('hidden');
+    }).catch(function(err) {
+      var errorEl = document.getElementById('login-error');
+      errorEl.textContent = 'Connection failed: ' + err.message;
+      errorEl.classList.remove('hidden');
     });
   }
 
@@ -444,6 +461,16 @@ document.addEventListener('DOMContentLoaded', function() {
   var appointments = [];
   var visitData = [];
 
+  function showError(msg) {
+    var banner = document.getElementById('error-banner');
+    document.getElementById('error-message').textContent = msg;
+    banner.classList.remove('hidden');
+  }
+
+  function hideError() {
+    document.getElementById('error-banner').classList.add('hidden');
+  }
+
   function apiFetch(path, opts) {
     opts = opts || {};
     opts.headers = opts.headers || {};
@@ -455,10 +482,18 @@ document.addEventListener('DOMContentLoaded', function() {
         TOKEN = '';
         sessionStorage.removeItem('asm_token');
         requireLogin();
-        return null;
+        return Promise.reject('Session expired');
       }
+      if (r.status >= 500) {
+        return r.text().then(function(text) { showError('Server error: ' + text); return null; });
+      }
+      hideError();
       return r.json();
-    }).catch(function() { return null; });
+    }).catch(function(err) {
+      if (err === 'Session expired' || err === null) return null;
+      showError('Connection error. Is your Redis database connected in Vercel?');
+      return null;
+    });
   }
 
   // ========== LOAD DATA FROM API ==========
