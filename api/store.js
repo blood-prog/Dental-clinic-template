@@ -1,29 +1,37 @@
-let kv;
+let redis;
 try {
-  kv = require('@vercel/kv').kv;
+  const { Redis } = require('@upstash/redis');
+  redis = new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL || '',
+    token: process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN || '',
+  });
 } catch (e) {
-  kv = null;
+  redis = null;
 }
 
 const memory = {};
 
+function isRedisReady() {
+  return redis && redis.url && redis.token;
+}
+
 async function get(key) {
-  if (kv) {
-    try { return await kv.get(key); } catch (e) { /* fall through */ }
+  if (isRedisReady()) {
+    try { return await redis.get(key); } catch (e) { /* fall through */ }
   }
   return memory[key] ?? null;
 }
 
 async function set(key, value) {
-  if (kv) {
-    try { await kv.set(key, value); return; } catch (e) { /* fall through */ }
+  if (isRedisReady()) {
+    try { await redis.set(key, value); return; } catch (e) { /* fall through */ }
   }
   memory[key] = value;
 }
 
 async function del(key) {
-  if (kv) {
-    try { await kv.del(key); return; } catch (e) { /* fall through */ }
+  if (isRedisReady()) {
+    try { await redis.del(key); return; } catch (e) { /* fall through */ }
   }
   delete memory[key];
 }
@@ -42,7 +50,7 @@ async function push(key, item) {
 
 async function update(key, id, updates) {
   const arr = await list(key);
-  const idx = arr.findIndex(i => i.id === id);
+  const idx = arr.findIndex(i => String(i.id) === String(id));
   if (idx === -1) return null;
   arr[idx] = { ...arr[idx], ...updates };
   await set(key, arr);
@@ -51,9 +59,9 @@ async function update(key, id, updates) {
 
 async function remove(key, id) {
   const arr = await list(key);
-  const filtered = arr.filter(i => i.id !== id);
+  const filtered = arr.filter(i => String(i.id) !== String(id));
   await set(key, filtered);
   return filtered;
 }
 
-module.exports = { get, set, del, list, push, update, remove, kv };
+module.exports = { get, set, del, list, push, update, remove };
