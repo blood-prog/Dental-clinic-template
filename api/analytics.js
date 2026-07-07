@@ -1,16 +1,17 @@
-const { get, set, list } = require('./store');
+const { get, set, list, requireAuth } = require('./store');
 
 const VISITS_KEY = 'asm_visits';
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   try {
     if (req.method === 'GET') {
+      if (!requireAuth(req, res)) return;
       const visits = await get(VISITS_KEY);
       const appointments = await list('asm_appointments');
       const totalAppts = appointments.length;

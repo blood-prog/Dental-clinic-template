@@ -1,4 +1,4 @@
-const { set } = require('./store');
+const { set, requireAuth } = require('./store');
 
 const sampleAppointments = [
   { id: 1, patient: 'Jane Doe', date: '2026-07-10', time: '09:00', service: 'Comprehensive Cleaning', phone: '(555) 123-4567', email: 'jane@example.com', status: 'confirmed', createdAt: '2026-07-01T10:00:00Z' },
@@ -18,7 +18,9 @@ for (let i = 29; i >= 0; i--) {
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'POST') {
+    if (!requireAuth(req, res)) return;
     await set('asm_appointments', sampleAppointments);
     await set('asm_visits', sampleVisits);
     return res.status(200).json({ message: 'Database seeded with sample data', appointments: sampleAppointments.length, visits: sampleVisits.length });

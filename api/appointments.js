@@ -1,16 +1,17 @@
-const { list, push, update, remove } = require('./store');
+const { list, push, update, remove, requireAuth } = require('./store');
 
 const KEY = 'asm_appointments';
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   try {
     if (req.method === 'GET') {
+      if (!requireAuth(req, res)) return;
       const appointments = await list(KEY);
       return res.status(200).json(appointments);
     }
@@ -39,6 +40,7 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'PATCH') {
+      if (!requireAuth(req, res)) return;
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
       const { id, status } = body;
       if (!id || !status) {
@@ -50,6 +52,7 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'DELETE') {
+      if (!requireAuth(req, res)) return;
       const { id } = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
       if (!id) return res.status(400).json({ error: 'Missing id' });
       await remove(KEY, id);

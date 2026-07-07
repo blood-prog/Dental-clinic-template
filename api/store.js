@@ -64,4 +64,15 @@ async function remove(key, id) {
   return filtered;
 }
 
-module.exports = { get, set, del, list, push, update, remove };
+function requireAuth(req, res) {
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.replace('Bearer ', '').trim();
+  const correct = process.env.DASHBOARD_PASSWORD || 'admin123';
+  if (!token || token !== correct) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return false;
+  }
+  return true;
+}
+
+module.exports = { get, set, del, list, push, update, remove, requireAuth };
