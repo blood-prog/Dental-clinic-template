@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayine Care</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    
+    h1, h2, h3, .serif-text {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-arch {
+      border-top-left-radius: 50vw;
+      border-top-right-radius: 50vw;
+      overflow: hidden;
+      background-color: #333;
+      position: relative;
+    }
+
+    .hero-bg {
+      background-color: #e5e5e5;
+    }
+    
+    .btn-dark {
+      background-color: #333;
+      color: white;
+      border-radius: 9999px;
+      padding: 0.5rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      transition: background-color 0.2s;
+    }
+    
+    .btn-dark:hover {
+      background-color: #555;
+    }
+
+    .btn-icon {
+      background-color: white;
+      color: #333;
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #d1d5db;
+    }
+    .faq-answer { display: none; }
+    .faq-answer.open { display: block; }
+  </style>
+</head>
+<body class="antialiased selection:bg-gray-300 selection:text-black">
+<!-- BEGIN: MainHeader -->
+<header class="w-full max-w-7xl mx-auto px-6 pt-6 pb-4 flex justify-between items-center bg-transparent relative z-10">
+<div class="flex items-center gap-2 text-lg font-medium tracking-wide">
+<span>AYINE CARE</span>
+</div>
+<nav class="hidden md:flex gap-8 text-sm font-medium text-gray-700 bg-gray-200/50 rounded-full px-6 py-2 backdrop-blur-sm">
+<a class="hover:text-black transition-colors" href="#home">Home</a>
+<a class="hover:text-black transition-colors" href="#about">About Us</a>
+<a class="hover:text-black transition-colors" href="#services">Services</a>
+<a class="hover:text-black transition-colors" href="#testimonials">Testimonials</a>
+</nav>
+<a class="btn-dark book-btn" href="#booking">
+      Book Now
+      <span class="btn-icon">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</a>
+</header>
+<!-- END: MainHeader -->
+<main>
+<!-- BEGIN: Hero Section -->
+<section id="home" class="relative w-full max-w-7xl mx-auto px-6 pt-12 pb-24 hero-bg overflow-hidden">
+<!-- Decorative Elements -->
+<div class="absolute top-20 left-10 text-gray-300 text-2xl font-light">+</div>
+<div class="absolute top-40 right-20 text-gray-300 text-2xl font-light">+</div>
+<div class="absolute bottom-40 left-32 text-gray-300 text-2xl font-light">+</div>
+<div class="absolute bottom-20 right-40 text-gray-300 text-2xl font-light">+</div>
+<div class="flex flex-col md:flex-row items-center justify-center relative">
+<!-- Left Text -->
+<div class="md:absolute left-0 top-1/4 z-10 text-center md:text-left mb-8 md:mb-0 hidden lg:block">
+<h1 class="text-7xl lg:text-8xl xl:text-[140px] leading-none tracking-tight text-gray-800 serif-text">Your</h1>
+<h1 class="text-7xl lg:text-8xl xl:text-[140px] leading-none tracking-tight text-gray-800 serif-text pl-12">Health</h1>
+</div>
+<!-- Center Image Arch -->
+<div class="w-full max-w-[500px] lg:max-w-[600px] hero-arch aspect-[3/4] relative z-0 mx-auto">
+<img alt="Smiling Doctor" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1W-RT6ZkcvUu2nY_6wimwB3tnEBX0AjjxSofJLdUI88vLx2q8zroS7SyZK5Z870XDYwDioKnhg6sOalnJYG4FqAPNpkUaNxPrUGW8yEw3DLVRGAscq3ckDpFbpChP5Mixy3CNDt_ZA2POuQYOa8gmOORAJkmbtwK-C2eLu6DZE5lIWTSusPcxZcTt_PCi1dmo_WYAx5ZbUG8LvRKV6j-ESmWdgiT2vsVpjWBL_hVGzhr-k6UF2luHwti_pIcr9bExGUCYr-cbApo0"/>
+</div>
+<!-- Right Text -->
+<div class="md:absolute right-0 top-1/4 z-10 text-center md:text-left mt-8 md:mt-0 hidden lg:block">
+<h1 class="text-7xl lg:text-8xl xl:text-[140px] leading-none tracking-tight text-white mix-blend-difference serif-text pr-12">Our</h1>
+<h1 class="text-7xl lg:text-8xl xl:text-[140px] leading-none tracking-tight text-gray-800 serif-text">Priority</h1>
+</div>
+<!-- Mobile Title -->
+<div class="block lg:hidden text-center mt-8 z-10 relative">
+<h1 class="text-6xl md:text-7xl leading-none tracking-tight text-gray-800 serif-text">Your Health</h1>
+<h1 class="text-6xl md:text-7xl leading-none tracking-tight text-gray-800 serif-text mt-2">Our Priority</h1>
+</div>
+</div>
+<!-- Info Cards -->
+<div class="absolute bottom-10 left-6 lg:left-24 bg-white/60 backdrop-blur-md rounded-2xl p-6 max-w-xs z-10 hidden md:block">
+<p class="text-sm text-gray-700 mb-4">Elevating modern dentistry through a blend of clinical excellence and aesthetic intentionality.</p>
+<a class="btn-dark book-btn" href="#booking">
+          Book Appointment
+          <span class="btn-icon">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</a>
+</div>
+<div class="absolute bottom-20 right-6 lg:right-24 bg-white/60 backdrop-blur-md rounded-2xl p-6 max-w-[200px] text-center z-10 hidden md:block">
+<h2 class="text-4xl font-semibold mb-1">98%</h2>
+<p class="text-xs text-gray-600">Patient Satisfaction<br/>And Referral Rate.</p>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Services Section -->
+<section id="services" class="w-full max-w-7xl mx-auto px-6 py-24 bg-[#f2f2f2]">
+<div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-8">
+<div class="flex flex-wrap gap-3">
+<span class="service-tag bg-gray-800 text-white px-4 py-2 rounded-full text-sm cursor-pointer" data-service="0">General Health</span>
+<span class="service-tag bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-full text-sm cursor-pointer" data-service="1">Aesthetic Services</span>
+<span class="service-tag bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-full text-sm cursor-pointer" data-service="2">Innovative Technology</span>
+</div>
+<h2 class="text-4xl md:text-5xl serif-text text-gray-800 max-w-xl">Raising the Bar for Medical Services</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Big Card -->
+<div class="lg:col-span-7 bg-[#e5e5e5] rounded-3xl p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden" id="service-card">
+<img alt="Doctor Consultation" class="w-full md:w-1/2 rounded-2xl object-cover" id="service-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5qyN7DD_C28e9_q6dXhlN9ysRug0aWTUrnvGO6JCaHpocWap2B6zMtpw89mbCnzALQEzj0TjlD58KemRul8RbvJc81jPZaSC1CKqhOgLYB_Z5CgDfoHkiwadw3X58HsVuw3iHIzRJ4EmNBE3VGTtDDtatiUcl-gyHk6Uu-Sy5P0V3IoUu-QIjDoiGil2sMrEIu1gFu6DEb5H7y-u5dTR7fAXPJmpDThrU2YepeNkOZw3JfgGuuJ0XF5giRVYVzZZMZB4vPXDIC_r7"/>
+<div class="flex flex-col justify-between py-4">
+<div>
+<h3 class="text-2xl font-medium mb-4 text-gray-800" id="service-title">Precision Preventive Care</h3>
+<p class="text-gray-600 text-sm leading-relaxed mb-6" id="service-desc">Cutting-edge cleaning protocols designed to maintain your natural health and promote long-term wellness.</p>
+<a class="btn-dark book-btn" href="#booking">
+                View More
+                <span class="btn-icon">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</a>
+</div>
+<div class="flex justify-between items-end mt-12 md:mt-0">
+<span class="text-sm font-medium"><span id="service-index">1</span> <span class="text-gray-400">/5</span></span>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-gray-400 flex items-center justify-center hover:bg-white transition-colors" id="service-prev">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button class="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-colors" id="service-next">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Small Card -->
+<div class="lg:col-span-5 flex flex-col justify-center">
+<div class="bg-white/50 rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Doctor in Gloves" class="w-full h-48 object-cover rounded-2xl" id="service-side-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQT5GqScaYppD7CBdEgMA0vKB26Op6BbhDSS_x-naX6QUQWK-AYQGuu3fPDl_s9qesFMWL5Pk68sPiToT5jtCIN0DEUIoO2V7bta4-vdiA2jgTB1CRhXg8BAXbR09MDVynzVpYC-FcFJQQND5w_4M0E6JDb2pwOXveyEdCFaAywi0iPgzolWEESejej6850t1sLttyXxP8GmrhANM572loHrOsiKXblQxmTJcylBm6dFDkUkqrByuXCiq3kuBj7nESeSUXgTFGqICG"/>
+<button class="absolute top-1/2 right-4 -translate-y-1/2 w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-colors shadow-lg" id="service-side-next">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<p class="text-sm text-gray-600 leading-relaxed max-w-sm" id="service-side-desc">Professional advice for improved health practices, customized wellness plans, and proactive health measures.</p>
+</div>
+</div>
+</section>
+<!-- END: Services Section -->
+<!-- BEGIN: About / Journey Section -->
+<section id="about" class="w-full max-w-7xl mx-auto px-6 py-24 border-t border-gray-300">
+<h2 class="text-4xl md:text-5xl serif-text text-gray-800 mb-16 max-w-lg">An Easy Journey to Health Care</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+<!-- List -->
+<div class="flex flex-col gap-6 text-sm text-gray-600">
+<div class="border-b border-gray-300 pb-2 flex justify-between items-center cursor-pointer hover:text-gray-900 transition-colors">
+<span>Empathy</span>
+</div>
+<div class="border-b border-gray-300 pb-2 flex justify-between items-center cursor-pointer hover:text-gray-900 transition-colors">
+<span>Teamwork</span>
+</div>
+<div class="border-b border-gray-300 pb-2 flex justify-between items-center cursor-pointer hover:text-gray-900 transition-colors">
+<span>Adaptability</span>
+</div>
+<div class="border-b border-gray-300 pb-2 flex justify-between items-center cursor-pointer hover:text-gray-900 transition-colors">
+<span>Quality</span>
+</div>
+<div class="mt-8">
+<a class="btn-dark book-btn" href="#booking">
+                        Schedule Appointment
+                        <span class="btn-icon">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</a>
+</div>
+</div>
+<!-- Image -->
+<div class="lg:col-span-1 rounded-2xl overflow-hidden h-64 lg:h-auto">
+<img alt="Doctor and Patient" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDga0fU_nHU15Cst65NknVEE6csNSCgJpHkhOWdHTJVSVU-tMMe0RhrhviSJpIa8D5ST1F_IJFSTEEU_6sepBamyhKCENnp8R21TYyGaABF-qBR4rCFGEIIJ2_dmukVGL-iJjv-woWyehJIxAQBH1a6VX95Y67D_QuiWqE8lTx3UCnb1yLDJ0nl666XPHCwaxJpMStyYeNluQJ8KhzXR3rnDgCstQEhpyFRySMZAX5KUqebP5Y-ARWras46J3RTltZniYVOCYjLZk1Y"/>
+</div>
+<!-- Dark Card -->
+<div class="lg:col-span-1 bg-[#2a2a2a] rounded-2xl p-8 flex flex-col justify-between text-white">
+<p class="text-lg leading-relaxed mb-12">We are dedicated to providing top-notch medical care with tailored treatment plans.</p>
+<div class="flex flex-wrap gap-4 text-xs text-gray-400">
+<span>Empathy</span>
+<span>Teamwork</span>
+<span>Adaptability</span>
+<span>Quality</span>
+<span>Clarity</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: About Section -->
+<!-- BEGIN: Testimonials Section -->
+<section id="testimonials" class="w-full bg-[#2a2a2a] text-white py-24 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Text Content -->
+<div>
+<h2 class="text-4xl md:text-5xl serif-text mb-6">Care for a healthier<br/>future</h2>
+<p class="text-gray-400 text-sm mb-12">Prioritizing your health with advanced technology and a human touch.</p>
+<div class="rounded-2xl overflow-hidden max-w-md">
+<img alt="Doctors looking at tablet" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3Eav0DhHeF1iOQaQcRI1NxYWi9VxERQ6sHBRciDVIKCwV5RdGMtOJgq3PXXC69Lvgbjo5B7xRKreS4hSZ05LbixVn6mLzSfnZu_TghdUKpVT3YsqjBKaTO1AkoHTpC7hDrXiLHvB9_N7Kt4sDu_90X_xyb-LNZyKsAbAFCmt0yqgWLz0RMDf_yztTunCHpZixbteMtu0j2mPTto3trt4fCk-fCwsF4-AJz2R-3g6WpUL0p7mwev9uN6mCq5aZvToY4DuWz7wFb2gN"/>
+</div>
+</div>
+<!-- Right Content -->
+<div class="flex flex-col gap-8">
+<div class="flex justify-between items-start border-b border-gray-700 pb-4">
+<span class="text-sm tracking-widest text-gray-400 uppercase">ST. JUDE MEDICAL CENTER</span>
+<span class="text-xs text-gray-500 italic">Excellence in Compassionate Care</span>
+</div>
+<div class="relative rounded-2xl overflow-hidden max-w-sm ml-auto">
+<img alt="Doctor with clipboard" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSL_njNgpEQ3zG490DMYReauA-yUbKz22JT1Vs9W_kcuwqqKt_bmN-RZlcnXR7hTfTiI2XYbnF5Q8b-1trOtE3X4ZgwWlUJPUXi-8oKYcDiHAHqPS19L57-oGi5NhJlOsB0m1cov5H71koWxdqaLmuQD3JnU0dMtowhc1RPdjec7yu7uX1VFQc_kdMHyE2ztbXH7fJGvUyurlnFi91mrqlXKfBndgPJ43ks7dUencBvFZI7iOXvnM1UUaA9dtdRXAt1ZhXgSKxBLb8"/>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
+<h4 class="font-medium text-lg mb-1">Ready to prioritize your health?</h4>
+<p class="text-xs text-gray-300 mb-4 line-clamp-2">Book your consultation or wellness checkup today and experience healthcare redefined.</p>
+<button class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors book-btn" id="testimonial-cta-btn">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="flex justify-end mt-4">
+<a class="btn-dark bg-white text-black hover:bg-gray-200 book-btn" href="#booking">
+                        Book Appointment
+                        <span class="btn-icon bg-[#2a2a2a] text-white">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Testimonials Section -->
+<!-- BEGIN: FAQ Section -->
+<section class="w-full max-w-7xl mx-auto px-6 py-24 bg-[#f2f2f2]">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Info -->
+<div class="lg:col-span-4">
+<h2 class="text-4xl md:text-5xl serif-text text-gray-800 mb-4">Frequently Asked Questions?</h2>
+<p class="text-gray-500 text-sm">Can't find what you're looking for?</p>
+<a class="btn-dark mt-6 inline-flex book-btn" href="#booking">Contact Us</a>
+</div>
+<!-- Accordion -->
+<div class="lg:col-span-8 flex flex-col">
+<div class="faq-item py-6">
+<button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-gray-800">
+<span>How do I schedule an appointment?</span>
+<span class="faq-icon w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</button>
+<div class="faq-answer open mt-4 text-sm text-gray-500 leading-relaxed pr-8">
+                        You can book an appointment directly through our online portal, or by calling our reception desk during office hours. We also offer a "Request a Callback" feature for your convenience.
+                    </div>
+</div>
+<div class="faq-item py-6">
+<button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-gray-800 hover:text-black">
+<span>Do you offer teleconsultations?</span>
+<span class="faq-icon text-gray-400 font-light text-xl">+</span>
+</button>
+<div class="faq-answer mt-4 text-sm text-gray-500 leading-relaxed pr-8">Yes, we offer teleconsultations for follow-up visits and minor concerns. You can schedule one through our online portal or by calling our office.</div>
+</div>
+<div class="faq-item py-6">
+<button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-gray-800 hover:text-black">
+<span>What should I bring to my first visit?</span>
+<span class="faq-icon text-gray-400 font-light text-xl">+</span>
+</button>
+<div class="faq-answer mt-4 text-sm text-gray-500 leading-relaxed pr-8">Please bring your ID, insurance card, a list of current medications, and any relevant medical records or prior dental X-rays.</div>
+</div>
+<div class="faq-item py-6">
+<button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-gray-800 hover:text-black">
+<span>Which insurance plans do you accept?</span>
+<span class="faq-icon text-gray-400 font-light text-xl">+</span>
+</button>
+<div class="faq-answer mt-4 text-sm text-gray-500 leading-relaxed pr-8">We accept most major insurance plans including Aetna, Cigna, Blue Cross Blue Shield, and UnitedHealthcare. Contact our office to verify your specific plan.</div>
+</div>
+<div class="faq-item py-6">
+<button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-gray-800 hover:text-black">
+<span>How can I access my lab results?</span>
+<span class="faq-icon text-gray-400 font-light text-xl">+</span>
+</button>
+<div class="faq-answer mt-4 text-sm text-gray-500 leading-relaxed pr-8">You can access your lab results through our secure patient portal. Results are typically available within 24-48 hours after processing.</div>
+</div>
+<div class="faq-item py-6 border-b-0">
+<button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-gray-800 hover:text-black">
+<span>Is emergency care available 24/7?</span>
+<span class="faq-icon text-gray-400 font-light text-xl">+</span>
+</button>
+<div class="faq-answer mt-4 text-sm text-gray-500 leading-relaxed pr-8">Yes, we have 24/7 emergency care available. Please call our emergency hotline for immediate assistance.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FAQ Section -->
+
+<!-- BEGIN: Booking Section -->
+<section id="booking" class="w-full max-w-7xl mx-auto px-6 py-24">
+<div class="max-w-3xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl serif-text text-gray-800 mb-4">Book Your <span class="italic">Visit</span></h2>
+<p class="text-gray-500 text-sm">Schedule your consultation or wellness checkup today.</p>
+</div>
+<form id="booking-form" class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 space-y-6 border border-gray-200/50">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+<input class="w-full rounded-full border border-gray-200 py-2.5 px-5 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" id="book-first" type="text" placeholder="Jane" required/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+<input class="w-full rounded-full border border-gray-200 py-2.5 px-5 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" id="book-last" type="text" placeholder="Doe" required/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input class="w-full rounded-full border border-gray-200 py-2.5 px-5 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" id="book-email" type="email" placeholder="jane@example.com" required/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+<input class="w-full rounded-full border border-gray-200 py-2.5 px-5 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" id="book-phone" type="tel" placeholder="(555) 123-4567"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+<input class="w-full rounded-full border border-gray-200 py-2.5 px-5 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" id="book-date" type="date" required/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Service</label>
+<select class="w-full rounded-full border border-gray-200 py-2.5 px-5 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" id="book-service">
+<option value="General Consultation">General Consultation</option>
+<option value="Preventive Care">Preventive Care</option>
+<option value="Aesthetic Services">Aesthetic Services</option>
+<option value="Emergency Care">Emergency Care</option>
+</select>
+</div>
+</div>
+<button class="btn-dark w-full justify-center py-3" type="submit">
+                        Confirm Booking
+                        <span class="btn-icon">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</button>
+<p id="booking-message" class="text-sm text-center hidden"></p>
+</form>
+</div>
+</section>
+<!-- END: Booking Section -->
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ========== SMOOTH SCROLL FOR NAV & ANCHOR LINKS ==========
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ========== BOOK BUTTONS ==========
+  document.querySelectorAll('.book-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var target = document.querySelector('#booking');
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ========== FAQ ACCORDION ==========
+  document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var answer = this.nextElementSibling;
+      var icon = this.querySelector('.faq-icon');
+      var isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer.open').forEach(function(a) { a.classList.remove('open'); });
+      document.querySelectorAll('.faq-toggle').forEach(function(b) {
+        var i = b.querySelector('.faq-icon');
+        if (i) {
+          if (i.querySelector('svg')) {
+            i.querySelector('svg').innerHTML = '<path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>';
+          } else {
+            i.textContent = '+';
+          }
+        }
+      });
+      if (!isOpen) {
+        answer.classList.add('open');
+        if (icon) {
+          if (icon.querySelector('svg')) {
+            icon.querySelector('svg').innerHTML = '<path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>';
+          } else {
+            icon.textContent = '−';
+          }
+        }
+      }
+    });
+  });
+
+  // ========== SERVICES CAROUSEL ==========
+  var services = [
+    {
+      title: 'Precision Preventive Care',
+      desc: 'Cutting-edge cleaning protocols designed to maintain your natural health and promote long-term wellness.',
+      sideDesc: 'Professional advice for improved health practices, customized wellness plans, and proactive health measures.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD5qyN7DD_C28e9_q6dXhlN9ysRug0aWTUrnvGO6JCaHpocWap2B6zMtpw89mbCnzALQEzj0TjlD58KemRul8RbvJc81jPZaSC1CKqhOgLYB_Z5CgDfoHkiwadw3X58HsVuw3iHIzRJ4EmNBE3VGTtDDtatiUcl-gyHk6Uu-Sy5P0V3IoUu-QIjDoiGil2sMrEIu1gFu6DEb5H7y-u5dTR7fAXPJmpDThrU2YepeNkOZw3JfgGuuJ0XF5giRVYVzZZMZB4vPXDIC_r7',
+      sideImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAQT5GqScaYppD7CBdEgMA0vKB26Op6BbhDSS_x-naX6QUQWK-AYQGuu3fPDl_s9qesFMWL5Pk68sPiToT5jtCIN0DEUIoO2V7bta4-vdiA2jgTB1CRhXg8BAXbR09MDVynzVpYC-FcFJQQND5w_4M0E6JDb2pwOXveyEdCFaAywi0iPgzolWEESejej6850t1sLttyXxP8GmrhANM572loHrOsiKXblQxmTJcylBm6dFDkUkqrByuXCiq3kuBj7nESeSUXgTFGqICG'
+    },
+    {
+      title: 'Advanced Aesthetic Restoration',
+      desc: 'Transform your appearance with our comprehensive aesthetic services including veneers, bonding, and smile makeovers tailored to your unique facial structure.',
+      sideDesc: 'Expert cosmetic consultations using digital smile design technology to preview and perfect your results before treatment begins.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB3Eav0DhHeF1iOQaQcRI1NxYWi9VxERQ6sHBRciDVIKCwV5RdGMtOJgq3PXXC69Lvgbjo5B7xRKreS4hSZ05LbixVn6mLzSfnZu_TghdUKpVT3YsqjBKaTO1AkoHTpC7hDrXiLHvB9_N7Kt4sDu_90X_xyb-LNZyKsAbAFCmt0yqgWLz0RMDf_yztTunCHpZixbteMtu0j2mPTto3trt4fCk-fCwsF4-AJz2R-3g6WpUL0p7mwev9uN6mCq5aZvToY4DuWz7wFb2gN',
+      sideImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSL_njNgpEQ3zG490DMYReauA-yUbKz22JT1Vs9W_kcuwqqKt_bmN-RZlcnXR7hTfTiI2XYbnF5Q8b-1trOtE3X4ZgwWlUJPUXi-8oKYcDiHAHqPS19L57-oGi5NhJlOsB0m1cov5H71koWxdqaLmuQD3JnU0dMtowhc1RPdjec7yu7uX1VFQc_kdMHyE2ztbXH7fJGvUyurlnFi91mrqlXKfBndgPJ43ks7dUencBvFZI7iOXvnM1UUaA9dtdRXAt1ZhXgSKxBLb8'
+    },
+    {
+      title: 'Innovative Technology Solutions',
+      desc: 'Experience the future of healthcare with our state-of-the-art diagnostic tools, digital imaging, and minimally invasive treatment options.',
+      sideDesc: 'Advanced technology enabling faster diagnoses, more precise treatments, and dramatically reduced recovery times.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDga0fU_nHU15Cst65NknVEE6csNSCgJpHkhOWdHTJVSVU-tMMe0RhrhviSJpIa8D5ST1F_IJFSTEEU_6sepBamyhKCENnp8R21TYyGaABF-qBR4rCFGEIIJ2_dmukVGL-iJjv-woWyehJIxAQBH1a6VX95Y67D_QuiWqE8lTx3UCnb1yLDJ0nl666XPHCwaxJpMStyYeNluQJ8KhzXR3rnDgCstQEhpyFRySMZAX5KUqebP5Y-ARWras46J3RTltZniYVOCYjLZk1Y',
+      sideImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1W-RT6ZkcvUu2nY_6wimwB3tnEBX0AjjxSofJLdUI88vLx2q8zroS7SyZK5Z870XDYwDioKnhg6sOalnJYG4FqAPNpkUaNxPrUGW8yEw3DLVRGAscq3ckDpFbpChP5Mixy3CNDt_ZA2POuQYOa8gmOORAJkmbtwK-C2eLu6DZE5lIWTSusPcxZcTt_PCi1dmo_WYAx5ZbUG8LvRKV6j-ESmWdgiT2vsVpjWBL_hVGzhr-k6UF2luHwti_pIcr9bExGUCYr-cbApo0'
+    },
+    {
+      title: 'Comprehensive Wellness Programs',
+      desc: 'Holistic health programs combining dietary guidance, stress management, and preventive care for complete mind-body wellness.',
+      sideDesc: 'Personalized wellness plans developed by our multidisciplinary team to address your overall health goals.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCkX61rgxC6w5L8uRHxo7HfLQPFiwMPDh-nlJC_KOxoUNqglwvbpO4PpsJr1Rdl-toJq1oDD7dZbI1u4g6gfWqaGCGsdGOI-dPf9oANI5S4HvAfDhf1XskzVZJkR0gcUSfaOKlSkg2Qh9NwAdh0vm1Hra9hFMQ4EOtBl5aYz9JV8nzEpg1VG_EkBeiDBAhAOoxMUie56vVre8HDEwI3497mJPhQMSwb6fLyZjS49VR0lX1bVlKZzrqa5tFUVe0ZIHjoJKLQCWJYSM5M',
+      sideImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgKOJzIRYo_X0T3_7TuAr9iXlUdOmA3pmHfITtu6FIUuuE5KOx4aNAcFz5vzavX7vgmVUki5ZV0t0b22Jlk3CELGmg4y16VrhgTGpZMzdHm_p3_cEtICYmGmMa56vsy3qNRSmgHlDVk25-zEBqkzkpiX2tqhGxayhslQwX9ZQ1L1e-k7-WxBafFCPz-nYVXGwWDjbKNTDoJ8LJnX8w5WYPApI4VXgqxRbzSIhMxxyjS1WIe-EZdXaJVSn0MbOFgKACMkbX52G3BXTD'
+    },
+    {
+      title: 'Emergency & Urgent Care',
+      desc: 'Immediate attention for dental emergencies, acute health concerns, and urgent medical needs with minimal wait times.',
+      sideDesc: 'Same-day emergency appointments available with our on-call specialist team ready to provide immediate relief.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCJmXgl2EE_FykJ7_DcZ0jMMz5EL_QrWDEFVhn-OqQ65Td9s7-XZ6C_hgn5bT8tFgbNCB2Ux3UW_j8kf_lY4s0uFRJsFTl3rFnDXp6DArAN6K-Ae5_0f1tNXg3s1KtdauYG4J_dWsAq1eYI7pVS7tMDmOqHK4h63Kxm8j41OsQ8XXeJS2iDAzED6JTH8JinTnNL9vq7Te8tLDLqL_1D5GqM5nZXnKFQ02RBU2AotHHHML2XQD5qL9Gm3mx4bxL9t--HhXB3eADJYKGC',
+      sideImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDT-FwHgCYUcOqg2qd6m5J1fHfgmEO6d3GuAftuEzWfaqhOKV55GzNRpsWABJou5wHHjLGPBcd6DqOjDJwkb7o9DMu4lC74QIsqdZvpIP1coIBnJKcCtaVvGCMm0xzSuqeqvqCbLJqxiambkxXSnFtnbVo9qC6j2GEon2T-RjsqAqK4UQUWzKb-maZ2hu-ZMMaUUOR-uBXJth3rYhJiOGcf4cPxhNuZLRQ63TadXihWzdl0rcIp-sy871_zHPpLZkhmHBANOe5h7CXe'
+    }
+  ];
+
+  var currentService = 0;
+
+  function updateService(index) {
+    var s = services[index];
+    document.getElementById('service-title').textContent = s.title;
+    document.getElementById('service-desc').textContent = s.desc;
+    document.getElementById('service-image').src = s.image;
+    document.getElementById('service-side-image').src = s.sideImage;
+    document.getElementById('service-side-desc').textContent = s.sideDesc;
+    document.getElementById('service-index').textContent = index + 1;
+  }
+
+  document.getElementById('service-next').addEventListener('click', function() {
+    currentService = (currentService + 1) % services.length;
+    updateService(currentService);
+  });
+
+  document.getElementById('service-prev').addEventListener('click', function() {
+    currentService = (currentService - 1 + services.length) % services.length;
+    updateService(currentService);
+  });
+
+  document.getElementById('service-side-next').addEventListener('click', function() {
+    currentService = (currentService + 1) % services.length;
+    updateService(currentService);
+  });
+
+  document.querySelectorAll('.service-tag').forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      document.querySelectorAll('.service-tag').forEach(function(t) {
+        t.className = 'service-tag bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-full text-sm cursor-pointer';
+      });
+      this.className = 'service-tag bg-gray-800 text-white px-4 py-2 rounded-full text-sm cursor-pointer';
+      currentService = parseInt(this.getAttribute('data-service'));
+      updateService(currentService);
+    });
+  });
+
+  // ========== BOOKING FORM SUBMISSION ==========
+  var bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var msg = document.getElementById('booking-message');
+      var btn = this.querySelector('button[type="submit"]');
+      var first = document.getElementById('book-first').value.trim();
+      var last = document.getElementById('book-last').value.trim();
+      var email = document.getElementById('book-email').value.trim();
+      var date = document.getElementById('book-date').value;
+      if (!first || !last || !email || !date) {
+        msg.textContent = 'Please fill in all required fields.';
+        msg.className = 'text-sm text-red-500 mt-2';
+        msg.classList.remove('hidden');
+        return;
+      }
+      btn.disabled = true;
+      btn.innerHTML = 'Sending...';
+      fetch(window.location.origin + '/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient: first + ' ' + last,
+          email: email,
+          phone: document.getElementById('book-phone').value || '',
+          date: date,
+          time: '09:00',
+          service: document.getElementById('book-service').value
+        })
+      }).then(function(r) { return r.json(); }).then(function(result) {
+        if (result && result.id) {
+          msg.textContent = 'Appointment booked successfully! We\'ll confirm shortly.';
+          msg.className = 'text-sm text-green-600 font-semibold mt-2';
+          msg.classList.remove('hidden');
+          bookingForm.reset();
+        } else {
+          msg.textContent = 'Something went wrong. Please try again.';
+          msg.className = 'text-sm text-red-500 mt-2';
+          msg.classList.remove('hidden');
+        }
+        btn.disabled = false;
+        btn.innerHTML = 'Confirm Booking<span class="btn-icon"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+      });
+    });
+  }
+
+});
+</script>
+</body></html>
